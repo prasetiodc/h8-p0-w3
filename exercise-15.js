@@ -19,16 +19,19 @@ function groupAnimals(arr){
     }
   }
 
-  for(var k=0; k<zoo.length; k++){
-    if(k!=zoo.length-1){
-      if(zoo[k][0][0]>zoo[k+1][0][0]){
-        temp = zoo[k]
-        zoo[k] = zoo[k+1]
-        zoo[k+1] = temp
+  for(var l=zoo.length; l>=0;l--){
+    for(var k=0; k<l; k++){
+      if(k!=l-1){
+        if(zoo[k][0][0]>zoo[k+1][0][0]){
+          temp = zoo[k]
+          zoo[k] = zoo[k+1]
+          zoo[k+1] = temp
+        }
       }
     }
-    
   }
+    
+
   return zoo
 }
   
