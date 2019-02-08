@@ -1,38 +1,36 @@
-function sorting(arr){
-  var abjad = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-  var display=[]
-
-  //looping animal
-  for(var i=0; i<abjad.length; i++){
-    var temp = []
-    for(var j=0;j<arr.length;j++){
-      if(abjad[i]===arr[j][0]){
-        display.push(arr[j])        
-      }
-    }
-  }
-  return display
-}
-
 function groupAnimals(arr){
-    var sort =  sorting(arr)
-    var inputArr = [[]]
-    var urutan = 0
+  var zoo = []
+  var temp = []
 
-    for(var i=0; i<sort.length; i++){
-      // console.log(sort[i][0])
-      if(inputArr[0].length==0){
-        inputArr[0].push(sort[i])
-      }else if(inputArr[urutan][0][0]===sort[i][0]){
-          inputArr[urutan].push(sort[i])
-      }else{
-        urutan++
-        inputArr.push([sort[i]])
+  for(var i=0; i<arr.length; i++){
+    var cage = []
+    var flag = false
+
+    for(var j=0; j<zoo.length;j++){
+      if(zoo[j][0][0]===arr[i][0]){
+        zoo[j].push(arr[i])
+        flag = true
       }
-      // if(sort[i][0]===arr[])
     }
-    return inputArr
+
+    if(flag==false){
+      cage.push(arr[i])
+      zoo.push(cage)
+    }
   }
+
+  for(var k=0; k<zoo.length; k++){
+    if(k!=zoo.length-1){
+      if(zoo[k][0][0]>zoo[k+1][0][0]){
+        temp = zoo[k]
+        zoo[k] = zoo[k+1]
+        zoo[k+1] = temp
+      }
+    }
+    
+  }
+  return zoo
+}
   
   
   
